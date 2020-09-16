@@ -14,6 +14,34 @@
 
 <script>
 
+//components
+
+Vue.component("character-component",{
+    props:{
+        character_name:{
+            type:String,
+            required:true,
+        },
+        src_image:{
+            type:String,
+            required:true,
+        },
+        id:{
+            type:Number,
+            required:true,
+        }
+    },
+    template:`
+    <div>
+        <img :src="src_image" alt="image">
+        <h3>{{character_name}}</h3>
+    </div>
+    `,
+    methods:{
+        //
+    }
+});
+
 const app = new Vue({
     el: "#app",
     data:function(){
@@ -22,12 +50,7 @@ const app = new Vue({
       }  
     },
     methods:{
-        eliminar_img(e){
-            console.log(e, "evento");
-            let id = e.id;
-            let index = this.characters.findIndex((img)=>img.id===id);
-            this.characters.splice(index,1);
-        }
+        //
     }
 })
 
