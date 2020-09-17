@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Desafio VUE: SFC - Componentes</title>
 </head>
 <body>
@@ -20,60 +21,97 @@ v-for="character in characters"
 
 <!--cdn vue-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> 
+</body>
+</html>
 
 <script>
 
-//components
-
-Vue.component("character-component",{
-    props:{
-        character_name:{
-            type:String,
-            required:true,
+    //components
+    
+    Vue.component("character-component",{
+        props:{
+            character_name:{
+                type:String,
+                required:true,
+            },
+            src_image:{
+                type:String,
+                required:true,
+            },
+            id:{
+                type:Number,
+                required:true,
+            }
         },
-        src_image:{
-            type:String,
-            required:true,
-        },
-        id:{
-            type:Number,
-            required:true,
+        template:`
+        <div>
+            <img :src="src_image" alt="image">
+            <h3>{{character_name}}</h3>
+        </div>
+        `,
+        methods:{
+            //
         }
-    },
-    template:`
-    <div>
-        <img :src="src_image" alt="image">
-        <h3>{{character_name}}</h3>
-    </div>
-    `,
-    methods:{
-        //
-    }
-});
-
-//end components
-
-const app = new Vue({
-    el: "#app",
-    data:function(){
-      return{
-        title: "Rick & Morty characters",
-        characters:[
-            {id:1, name:"Rick Sanchez", src:"https://rickandmortyapi.com/api/character/avatar/1.jpeg"},
-            {id:2, name:"Morty Smith",  src:"https://rickandmortyapi.com/api/character/avatar/2.jpeg"},
-            {id:3, name:"Summer Smith", src:"https://rickandmortyapi.com/api/character/avatar/3.jpeg"},
-            {id:4, name:"Beth Smith",   src:"https://rickandmortyapi.com/api/character/avatar/4.jpeg"},
-            {id:5, name:"Jerry Smith",  src:"https://rickandmortyapi.com/api/character/avatar/5.jpeg"},
-        ]
-      }  
-    },
-    methods:{
-        //
-    }
-})
-
-</script>
-
-
-</body>
-</html>
+    });
+    
+    //end components
+    
+    const app = new Vue({
+        el: "#app",
+        data:function(){
+          return{
+            title: "Rick & Morty characters",
+            characters:[
+                {id:1, name:"Rick Sanchez", src:"https://rickandmortyapi.com/api/character/avatar/1.jpeg"},
+                {id:2, name:"Morty Smith",  src:"https://rickandmortyapi.com/api/character/avatar/2.jpeg"},
+                {id:3, name:"Summer Smith", src:"https://rickandmortyapi.com/api/character/avatar/3.jpeg"},
+                {id:4, name:"Beth Smith",   src:"https://rickandmortyapi.com/api/character/avatar/4.jpeg"},
+                {id:5, name:"Jerry Smith",  src:"https://rickandmortyapi.com/api/character/avatar/5.jpeg"},
+            ]
+          }  
+        },
+        methods:{
+            //
+        }
+    })
+    </script>
+    
+    <style scoped>
+    
+        body{
+            background-image: url("assets/img/cropped-RM_page-header_background1-3.png");
+        }
+        #app {
+            width:100%;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color:#fff;
+            }
+    
+        h2{
+            font-family: sans-serif;
+            font-size:18px;
+            padding:10px;
+            color:#fff;
+            }
+        
+        .characters{
+            display: flex;
+            align-items: center;
+            align-self: center;
+            padding:10px;
+        }
+    
+        .characters img{
+            width:80px;
+            height:auto;
+            border-radius: 50px;
+        }
+    
+        h3{
+            font-family: sans-serif;
+            padding:15px;
+            color:#1b8000;
+        }
+      </style>
