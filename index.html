@@ -7,10 +7,16 @@
 </head>
 <body>
     
-<div id="app"><h2>{{ title }}</h2></div>
-<character-component>
-
+<div id="app"><h2>{{ title }}</h2>
+<character-component
+class="characters"
+v-for="character in characters"
+:key="character.id"
+:id="character.id"
+:src_image="character.src"
+:character_name="character.name">
 </character-component>
+</div>
 
 <!--cdn vue-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> 
@@ -44,6 +50,8 @@ Vue.component("character-component",{
         //
     }
 });
+
+//end components
 
 const app = new Vue({
     el: "#app",
